@@ -1,0 +1,39 @@
+@import "settings";
+@import "layout";
+@import "topbar";
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: $body-font-family;
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+
+#{headings()} {
+  line-height: 1.1;
+  margin-top: 0;
+  font-weight: 700;
+}
+
+
+
+
+// grid / layout
+
+.mag-row {
+
+}
+
+.mag-flex-row {
+  display: flex;
+  flex-wrap: wrap;
+}

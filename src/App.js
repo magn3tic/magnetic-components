@@ -1,28 +1,30 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-class App extends Component {
+// This Is An Example Implementation of the UI Kit
+
+
+import React from 'react'
+
+import Layout from './layout/Layout'
+import TopBar from './layout/TopBar'
+
+
+
+
+class App extends React.Component {
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+      <Layout className="my-extra-class">
+        
+        <TopBar fixed={true}>
+          <h3>I'm in the top bar</h3>
+        </TopBar>
+        
+        <h1>App</h1>
+
+      </Layout>
+    )
   }
 }
 
-export default App;
+export default App
