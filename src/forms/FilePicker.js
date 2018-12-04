@@ -10,16 +10,48 @@ class FilePicker extends React.Component {
     super(props)
 
     this.state = {
-      files: []
+      files: [],
+      loading: false,
+      dragging: false
     }
+    this.inputRef = React.createRef()
+
+    this._onDragOver = this.onDragOver.bind(this)
+    this._onDragEnter = this.onDragEnter.bind(this)
+    this._onDragLeave = this.onDragLeave.bind(this)
+    this._onDropzoneClick = this.onDropzoneClick.bind(this)
+  }
+
+  onDragEnter(e) {
+    e.preventDefault()
+    this.setState({ dragging: true })
+  }
+  onDragLeave(e) {
+    e.preventDefault()
+    this.setState({ dragging: false })
+  }
+  onDragOver(e) {
+    e.preventDefault()
+    e.stopPropagation()
+  }
+
+  onDropzoneClick(e) {
+    e.preventDefault()
+    this.inputRef.current.click()
   }
 
   render() {
-    const { id, label, nameAttr, multiple, disabled, accept, dropzone, errors } = this.this.props
+    const { id, label, nameAttr, multiple, disabled, accept, dropzone, errors } = this.props
+    const { files, dragging, loading } = this.state
     
     const fieldClasses = classnames(['mag-field', 'mag-filepicker'], {
       'mag-field-error' : errors !== false,
-      'mag-field-disabled' : disabled
+      'mag-field-disabled' : disabled,
+      'mag-filepicker-dropzone' : dropzone
+    })
+    const dropzoneClasses = classnames(['mag-dropzone'], {
+      'mag-dropzone-dragging': dragging,
+      'mag-dropzone-hasfiles': files.length > 0
     })
 
     return (
@@ -27,22 +59,33 @@ class FilePicker extends React.Component {
 
         <div className="mag-field--input">
           {label &&
-          <label htmlFor={id} className="mag-field--input">{label}</label>}
-          <input type="file" accept={accept} multiple={multiple} />
-        </div>
+          <label htmlFor={id}>
+            <span>{label}</span>
+          </label>}
 
-        <div className="mag-filepicker-dropzone">
+          {files.length > 0 &&
+          <span>{files.length} Files Selected...</span>}
+          {files.length === 0 &&
+          <span>No Files Chosen...</span>}
 
+          <input type="file" id={id} ref={this.inputRef} accept={accept} multiple={multiple} />
         </div>
         
-        {(Array.isArray(errors) && errors.length > 0) &&
-        <div className="mag-field--errors">
+        {dropzone &&
+        <div className={dropzoneClasses} onDragOver={e => this._onDragOver} onClick={e => this._onDropzoneClick(e)}
+         onDragEnter={e => this._onDragEnter(e)} onDragLeave={(e) => this._onDragLeave(e)}>
+          
+          {files.length === 0 &&
+          <div className="mag-dropzone-empty">
+            <p>Drop A File Here, or Click To Upload</p>
+          </div>}
+
+          {files.length > 0 &&
           <ul>
-            {errors.map((error, item) => {
-            <li>{error}</li>
-            })}
-          </ul>
+          </ul>}
         </div>}
+        
+       
         
       </div>
     )
@@ -77,6 +120,7 @@ FilePicker.defaultProps = {
 }
 
 
+export default FilePicker
 
 
 

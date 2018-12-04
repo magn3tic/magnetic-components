@@ -1,0 +1,61 @@
+
+
+
+.mag-filepicker {
+
+  .mag-field--input {
+    display: block;
+    border: 2px solid $light;
+    padding: 10px;
+    border-radius: 4px;
+
+    > span {
+      display: inline-block;
+      font-size: 0.9em;
+      color: $dark;
+    }
+
+    input[type="file"] {
+      @include screen-reader-only();
+    }
+
+    label {
+      cursor: pointer;
+      display: inline-block;
+      background: $primary;
+      color: $light;
+      padding: 10px 15px;
+      border-radius: 4px;
+      font-size: 0.85em;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-right: 10px;
+    }
+  }
+
+  &.mag-filepicker-dropzone {
+
+    .mag-field--input {
+      border-bottom: none;
+      border-radius: 4px 4px 0 0;
+    }
+  }
+}
+
+
+
+.mag-dropzone {
+  min-height: 160px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  border: 2px solid $light;
+  border-radius: 0 0 4px 4px;
+}
+
+.mag-dropzone-empty {
+  p {
+    margin: 0;
+  }
+}

@@ -1,6 +1,7 @@
 @import "settings";
 @import "layout";
 @import "topbar";
+@import "filepicker";
 
 *, *:before, *:after {
   box-sizing: border-box;
@@ -13,6 +14,7 @@ html, body {
 
 body {
   font-family: $body-font-family;
+  color: $dark;
   line-height: 1.4;
   font-weight: 400;
 }
@@ -24,6 +26,11 @@ body {
   font-weight: 700;
 }
 
+
+
+.mag-main {
+  padding-top: 70px;
+}
 
 
 
