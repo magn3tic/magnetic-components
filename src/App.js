@@ -25,11 +25,11 @@ class App extends React.Component {
 
         <div className="test-spacer" style={{'marginTop': '10rem'}}>
           <TextInput
-            className="mag-testclass mag-another-testclass"
+            className="mag-testclass mag-another--testclass"
             id="mag-test-id"
             onChange={ e => console.log(e.target.value) }
             onBlur={ e => console.log('blur', e) }
-            errors={[ 'invalid input', 'not cool enough' ]}
+            errors={[ 'invalid input', 'not cool enough', 'not enough money' ]}
           />
         </div>
 

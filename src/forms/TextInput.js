@@ -1,10 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Label from './Label'
 
 const TextInput = props => {
   const {
-    className,
     id,
+    label,
     name,
     value,
     placeholder,
@@ -20,8 +21,9 @@ const TextInput = props => {
 
   return (
     <>
+      {(label.length > 0) && <Label inputId={ id } text={ label } />}
       <input
-        className={ `mag-textinput ${ className }` }
+        className={ `mag-field--input` }
         id={ id }
         type='text'
         name={ name }
@@ -36,19 +38,21 @@ const TextInput = props => {
         onFocus={ onFocus }
         onBlur={ onBlur }
       />
-      {errors.length > 0 &&
-        errors.map((err, i) =>
-        <div className="mag-inputerror">
-          <span key={ i }>{ err }</span>
-        </div>
-      )}
+      {(errors.length > 0) &&
+      <div className="mag-field--errors">
+        <ol>
+          {errors.map((error, i) => 
+            <li key={ i }>{error}</li>
+          )}
+        </ol>
+      </div>}
     </>
   )
 }
 
 TextInput.propTypes = {
-  className: PropTypes.string,
   id: PropTypes.string,
+  label: PropTypes.string,
   name: PropTypes.string,
   value: PropTypes.string,
   placeholder: PropTypes.string,
@@ -63,8 +67,8 @@ TextInput.propTypes = {
 }
 
 TextInput.defaultProps = {
-  className: '',
   id: '',
+  label: 'Label',
   disabled: false,
   errors: [],
   onChange: e => {},
