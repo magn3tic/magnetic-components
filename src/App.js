@@ -6,6 +6,7 @@ import React from 'react'
 
 import Layout from './layout/Layout'
 import TopBar from './layout/TopBar'
+import TextInput from './forms/TextInput'
 
 import FilePicker from './forms/FilePicker'
 
@@ -30,6 +31,16 @@ class App extends React.Component {
           </div>
         </main>
         
+
+        <div className="test-spacer" style={{'marginTop': '10rem'}}>
+          <TextInput
+            className="mag-testclass mag-another--testclass"
+            id="mag-test-id"
+            onChange={ e => console.log(e.target.value) }
+            onBlur={ e => console.log('blur', e) }
+            errors={[ 'invalid input', 'not cool enough', 'not enough money' ]}
+          />
+        </div>
 
       </Layout>
     )
