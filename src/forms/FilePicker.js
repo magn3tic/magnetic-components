@@ -92,8 +92,6 @@ class FilePicker extends React.Component {
   }
 }
 
-
-
 FilePicker.propTypes = {
   id: PropTypes.string,
   label: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
@@ -102,6 +100,7 @@ FilePicker.propTypes = {
   disabled: PropTypes.bool,
   accept: PropTypes.string,
   dropzone: PropTypes.bool,
+  // maybe, instead of below -- errors: PropTypes.oneOfType([ PropTypes.arrayOf(PropTypes.string), PropTypes.bool ])
   errors: PropTypes.oneOfType([PropTypes.bool, PropTypes.array]),
   onFilesUpdated: PropTypes.func
 }
