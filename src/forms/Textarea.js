@@ -4,13 +4,14 @@ import classnames from '../_lib/classnames'
 import Label from './Label'
 import InputErrors from './InputErrors'
 
-const TextInput = props => {
+const Textarea = props => {
   const {
     id,
     label,
     name,
     value,
     placeholder,
+    resizable,
     disabled,
     errors,
     onChange,
@@ -21,17 +22,17 @@ const TextInput = props => {
     onBlur,
   } = props
 
-  const cns = classnames(['mag-field', 'mag-textinput'], {
+  const cns = classnames(['mag-field', 'mag-textarea'], {
     'mag-field-error': errors !== false,
     'mag-field-disabled': disabled,
+    'mag-textarea-resizable': resizable
   })
 
   return (
     <div className={ cns }>
-      {(label.length > 0) && <Label inputId={ id } text={ label } />}
-      <input
+      <Label inputId={ id } text={ label } />
+      <textarea
         id={ id }
-        type='text'
         name={ name }
         value={ value }
         placeholder={ placeholder }
@@ -48,7 +49,7 @@ const TextInput = props => {
   )
 }
 
-TextInput.propTypes = {
+Textarea.propTypes = {
   id: PropTypes.string,
   label: PropTypes.string,
   name: PropTypes.string,
@@ -67,7 +68,7 @@ TextInput.propTypes = {
   onBlur: PropTypes.func,
 }
 
-TextInput.defaultProps = {
+Textarea.defaultProps = {
   id: '',
   label: 'Label',
   disabled: false,
@@ -80,4 +81,4 @@ TextInput.defaultProps = {
   onBlur: e => {},
 }
 
-export default TextInput
+export default Textarea
