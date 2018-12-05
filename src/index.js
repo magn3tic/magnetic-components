@@ -2,13 +2,16 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 import App from './App'
-
-import './_scss/app.scss'
+import App2 from './App2'
 
 import * as serviceWorker from './_lib/service-worker'
 
-ReactDOM.render(<App />, document.getElementById('root'))
+import './_scss/app.scss'
 
+ReactDOM.render(
+  process.env.REACT_APP_DEVELOPER_ENV === 'colin' ? <App2/> : <App/>, 
+  document.getElementById('root')
+)
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

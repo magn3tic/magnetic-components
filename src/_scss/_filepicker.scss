@@ -59,8 +59,7 @@
   }
 
   &.mag-dropzone-hasfiles {
-    justify-content: flex-start;
-    align-items: flex-start;
+    display: block;
   }
 }
 
@@ -84,8 +83,12 @@
   margin: 0;
   padding: 0;
 
+  display: flex;
+  flex-wrap: wrap;
+
   li {
     display: block;
+    position: relative;
     width: 110px;
     margin: 15px;
   }
@@ -98,24 +101,47 @@
     
     img {
       display: block; position:absolute;
-      top:0; left:0; width:100%; height:100%;
+      top:0; left:0; 
+      min-width: 100%;
+      min-height: 100%;
+      width: 100%;
     }
   }
 
   figcaption {
+    line-height: 1.1;
     display: block;
     font-size: 10px;
     background: $light;
     display: block;
-    padding: 4px;
+    padding: 6px 5px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
     span {
-      white-space: nowrap;
+      
     }
   }
 }
 
 
+.mag-filepicker-file-x {
+  @include btn-reset();
+  width: 28px; height: 28px;
+  background: $light;
+  border-radius: 50%;
+  position: absolute;
+  top:-4px; left:-4px;
+}
 
-
+.mag-filepicker-trashicon {
+  display: block;
+  svg {
+    display:block; position: absolute;
+    top: 6px; left: 6px;
+    width: 16px; height: 16px;
+    stroke: $danger;
+  }
+}
 
 

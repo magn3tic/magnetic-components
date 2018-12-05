@@ -15,7 +15,8 @@ class FilePicker extends React.Component {
     this.state = {
       files: [],
       dragging: false,
-      isloading: false
+      isloading: false,
+      haserrors: false
     }
     this.inputRef = React.createRef()
 
@@ -69,21 +70,25 @@ class FilePicker extends React.Component {
     for (let i=0; i < files.length; i++) {
       this.getImagePreview(files[i], preview => {
         const newfile = [{ file: files[i], preview }]
-        const merged = removeDuplicates([...this.state.files, ...newfile])
-        this.setState({
-          files: removeDuplicates([...this.state.files, ...newfile], 'preview')
-        })
+        const merged = removeDuplicates([...this.state.files, ...newfile], 'preview')
+        this.setState({ files: merged })
       })
     }
   }
 
   removeFile(e, index) {
     e.preventDefault()
-
-    console.log(index)
-
-    this.props.onFiles(this.state.files)
+    const files = [...this.state.files]
+    files.splice(index, 1)
+    this.setState({ files })
     e.stopPropagation()
+  }
+
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.files.length !== this.state.files.length) {
+      this.props.onFiles(this.state.files)
+    }
   }
 
 
@@ -123,7 +128,7 @@ class FilePicker extends React.Component {
          onDragEnter={e => this._onDragEnter(e)} onDragLeave={(e) => this._onDragLeave(e)} onDrop={(e) => this._onDropzoneDrop(e)}>
           {files.length === 0 &&
           <div className="mag-dropzone-empty">
-            <UploadCloud/>
+            <UploadCloud />
             <p>Drop A File Here, or Click To Upload</p>
           </div>}
           {files.length > 0 &&
@@ -135,7 +140,10 @@ class FilePicker extends React.Component {
               </figure>
               <figcaption><span>{file.file.name}</span></figcaption>
               <button className="mag-filepicker-file-x" type="button" onClick={e => this._removeFile(e, i)}>
-                <span class="sr-only">Remove {file.file.name}</span>
+                <span className="sr-only">Remove {file.file.name}</span>
+                <div className="mag-filepicker-trashicon">
+                  <Trash />
+                </div>
               </button>
             </li>)}
           </ul>}
