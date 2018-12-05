@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import classnames from '../_lib/classnames'
 import Label from './Label'
+import InputErrors from './InputErrors'
 
 const TextInput = props => {
   const {
@@ -19,8 +21,13 @@ const TextInput = props => {
     onBlur,
   } = props
 
+  const fieldClasses = classnames(['mag-field', 'mag-textinput'], {
+    'mag-field-error': errors !== false,
+    'mag-field-disabled': disabled,
+  })
+
   return (
-    <>
+    <div className={ fieldClasses }>
       {(label.length > 0) && <Label inputId={ id } text={ label } />}
       <input
         className={ `mag-field--input` }
@@ -30,7 +37,6 @@ const TextInput = props => {
         value={ value }
         placeholder={ placeholder }
         disabled={ disabled }
-        errors={ errors }
         onChange={ onChange }
         onKeyDown={ onKeyDown }
         onKeyPress={ onKeyPress }
@@ -38,15 +44,8 @@ const TextInput = props => {
         onFocus={ onFocus }
         onBlur={ onBlur }
       />
-      {(errors.length > 0) &&
-      <div className="mag-field--errors">
-        <ol>
-          {errors.map((error, i) => 
-            <li key={ i }>{error}</li>
-          )}
-        </ol>
-      </div>}
-    </>
+      <InputErrors errors={ errors } />
+    </div>
   )
 }
 
@@ -57,7 +56,10 @@ TextInput.propTypes = {
   value: PropTypes.string,
   placeholder: PropTypes.string,
   disabled: PropTypes.bool,
-  errors: PropTypes.arrayOf(PropTypes.string),
+  errors: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.string),
+    PropTypes.bool
+  ]).isRequired,
   onChange: PropTypes.func,
   onKeyDown: PropTypes.func,
   onKeyPress: PropTypes.func,
@@ -70,7 +72,7 @@ TextInput.defaultProps = {
   id: '',
   label: 'Label',
   disabled: false,
-  errors: [],
+  errors: false,
   onChange: e => {},
   onKeyDown: e => {},
   onKeyPress: e => {},
