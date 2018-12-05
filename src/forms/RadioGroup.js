@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from '../_lib/classnames'
 
-const RadioInput = props => {
+const RadioGroup = props => {
   const {
     options,
     errors,
@@ -10,7 +10,7 @@ const RadioInput = props => {
   } = props
 
   return (
-    <div className={classnames(['mag-field', 'mag-radioinput'], {
+    <div className={classnames(['mag-field', 'mag-radiogroup'], {
       'mag-field-error': errors !== false,
       'mag-field-disabled': disabled,
     })}>
@@ -19,4 +19,4 @@ const RadioInput = props => {
   )
 }
 
-export default RadioInput
+export default RadioGroup
