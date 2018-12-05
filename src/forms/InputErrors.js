@@ -2,15 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from '../_lib/classnames'
 
+
 const InputErrors = ({ errors }) => {
 
-  const classes = classnames(['mag-field--errors'], {
-    'mag-field-error': errors !== false,
+  const classes = classnames(['mag-errorlist'], {
+    'mag-has-errors': Array.isArray(errors) && errors.length > 0,
   })
 
   return (
     errors &&
-    <div className="mag-field--errors">
+    <div className={classes}>
       <ul>
         {errors.map((error, i) => 
           <li key={ i }>{ error }</li>

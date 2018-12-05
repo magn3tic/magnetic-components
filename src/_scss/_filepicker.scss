@@ -54,7 +54,8 @@
   border-radius: 0 0 4px 4px;
 
   &.mag-dropzone-dragging {
-    box-shadow: rgba($primary, 0.25) 0 2px 16px inset;
+    box-shadow: rgba($primary, 0.2) 0 0 0 4px;
+    border-color: $primary;
   }
 
   &.mag-dropzone-hasfiles {
@@ -65,8 +66,14 @@
 
 .mag-dropzone-empty {
   pointer-events: none;
+
+  svg {
+    display: block;
+    margin: 0 auto 10px;
+  }
   p {
-    margin: 0;
+    margin: 0 0 10px;
+    font-size: 0.9em;
   }
 }
 
@@ -79,7 +86,8 @@
 
   li {
     display: block;
-    width: 90px;
+    width: 110px;
+    margin: 15px;
   }
 
   figure {
@@ -91,6 +99,17 @@
     img {
       display: block; position:absolute;
       top:0; left:0; width:100%; height:100%;
+    }
+  }
+
+  figcaption {
+    display: block;
+    font-size: 10px;
+    background: $light;
+    display: block;
+    padding: 4px;
+    span {
+      white-space: nowrap;
     }
   }
 }

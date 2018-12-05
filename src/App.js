@@ -26,7 +26,7 @@ class App extends React.Component {
         <main className="mag-main">
           <div className="mag-inner">
 
-            <FilePicker id="filepicker" label="Upload An Image" dropzone={true} />
+            <FilePicker id="filepicker" label="Choose An Image" dropzone={true} />
 
           </div>
         </main>
