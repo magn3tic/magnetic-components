@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import classnames from '../_lib/classnames'
 
 
@@ -11,7 +10,7 @@ const InputErrors = ({ errors }) => {
 
   return (
     errors &&
-    <div className={classes}>
+    <div className={ classes }>
       <ul>
         {errors.map((error, i) => 
           <li key={ i }>{ error }</li>

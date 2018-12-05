@@ -27,7 +27,6 @@ class FilePicker extends React.Component {
     this._onInputChange = this.onInputChange.bind(this)
     this._removeFile = this.removeFile.bind(this)
   }
-  
 
   onDragEnter(e) {
     e.preventDefault()
@@ -84,7 +83,6 @@ class FilePicker extends React.Component {
     console.log(index)
 
     this.props.onFiles(this.state.files)
-
     e.stopPropagation()
   }
 
