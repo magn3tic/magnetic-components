@@ -6,10 +6,18 @@ import classnames from '../_lib/classnames'
 const Button = ({ id, type, intent, size, disabled, loading, component, onClick, children }) => {
 
   const Link = component ? component.link : false
+  
+  const variantClasses = ['mag-button', `mag-button-${size}`, `mag-button-${intent}`]
+  const btnClasses = classnames(variantClasses, {
+    'mag-button-loading' : loading
+  })
 
   return (
     <div className="mag-button">
-      {Link !== false && <Link {...component.props} />}
+      {Link !== false &&
+      <div id={id} className="mag-button--routelink">
+        {Link}
+      </div>}
       {!Link && 
       <button id={id} type={type} disabled={disabled} onClick={onClick}>
         <span className="mag-button--content">
