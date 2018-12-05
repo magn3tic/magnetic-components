@@ -3,7 +3,7 @@ import React from 'react'
 
 import Layout from './layout/Layout'
 import TopBar from './layout/TopBar'
-import NumberInput from './forms/NumberInput'
+import ColorInput from './forms/ColorInput'
 
 import FilePicker from './forms/FilePicker'
 
@@ -32,8 +32,10 @@ class App extends React.Component {
         <div className="test-spacer" style={{'marginTop': '10rem'}}>
           <div className="mag-inner">
             <form>
-              <NumberInput
-                id="mag-test-numinput"
+              <ColorInput
+                id="mag-test-colorinput"
+                name="mag-colorinput"
+                onChange={ ({ target }) => console.log(target.value) }
               />
             </form>
           </div>
