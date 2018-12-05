@@ -52,10 +52,51 @@
   justify-content: space-around;
   border: 2px solid $light;
   border-radius: 0 0 4px 4px;
+
+  &.mag-dropzone-dragging {
+    box-shadow: rgba($primary, 0.25) 0 2px 16px inset;
+  }
+
+  &.mag-dropzone-hasfiles {
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
 }
 
 .mag-dropzone-empty {
+  pointer-events: none;
   p {
     margin: 0;
   }
 }
+
+
+
+.mag-filepicker-files {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    display: block;
+    width: 90px;
+  }
+
+  figure {
+    height:0; margin:0;
+    padding-bottom: 100%;
+    position: relative;
+    overflow: hidden;
+    
+    img {
+      display: block; position:absolute;
+      top:0; left:0; width:100%; height:100%;
+    }
+  }
+}
+
+
+
+
+
+
