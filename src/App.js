@@ -10,6 +10,19 @@ import FilePicker from './forms/FilePicker'
 
 
 class App extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = { currentColor: '#FF0000', }
+
+    this.setCurrentColor = this.setCurrentColor.bind(this)
+  }
+
+  setCurrentColor(color, target) {
+    this.setState({
+      currentColor: color,
+    })
+  }
 
   render() {
     return (
@@ -35,7 +48,8 @@ class App extends React.Component {
               <ColorInput
                 id="mag-test-colorinput"
                 name="mag-colorinput"
-                onChange={ ({ target }) => console.log(target.value) }
+                value={ this.state.currentColor }
+                onChange={ this.setCurrentColor }
               />
             </form>
           </div>

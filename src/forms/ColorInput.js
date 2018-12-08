@@ -31,7 +31,7 @@ const ColorInput = props => {
         name={ name }
         value={ value }
         disabled={ disabled }
-        onChange={ onChange }
+        onChange={ e => onChange(e.target.value, e) }
         onFocus={ onFocus }
         onBlur={ onBlur }
       />
