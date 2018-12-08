@@ -1,12 +1,16 @@
 @import "settings";
 @import "layout";
-@import "topbar";
 @import "filepicker";
+@import "button";
 
 *, *:before, *:after {
   box-sizing: border-box;
 }
 
+html {
+  background: $lightest;
+  font-size: $body-font-size;
+}
 html, body {
   margin: 0;
   padding: 0;
@@ -24,6 +28,7 @@ body {
   line-height: 1.1;
   margin-top: 0;
   font-weight: 700;
+  font-family: $heading-font-family;
 }
 
 

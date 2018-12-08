@@ -3,28 +3,29 @@ import PropTypes from 'prop-types'
 import classnames from '../_lib/classnames'
 
 
-const Button = ({ id, type, intent, size, disabled, loading, component, onClick, children }) => {
+const Button = ({ id, type, style, intent, size, disabled, loading, component, onClick, children }) => {
 
   const Link = component ? component.link : false
   
-  const variantClasses = ['mag-button', `mag-button-${size}`, `mag-button-${intent}`]
+  const variantClasses = ['mag-button', `size-${size}`, `intent-${intent}`, `style-${style}`]
   const btnClasses = classnames(variantClasses, {
-    'mag-button-loading' : loading
+    'mag-button-loading': loading,
+    'mag-button-routelink': Link !== false
   })
 
   return (
-    <div className="mag-button">
+    <React.Fragment>
       {Link !== false &&
-      <div id={id} className="mag-button--routelink">
+      <div id={id} className={btnClasses}>
         {Link}
       </div>}
       {!Link && 
-      <button id={id} type={type} disabled={disabled} onClick={onClick}>
+      <button className={btnClasses} id={id} type={type} disabled={disabled} onClick={onClick}>
         <span className="mag-button--content">
           {children}
         </span>
       </button>}
-    </div>
+    </React.Fragment>
   )
 }
 
@@ -32,7 +33,8 @@ const Button = ({ id, type, intent, size, disabled, loading, component, onClick,
 Button.propTypes = {
   id: PropTypes.string,
   type: PropTypes.oneOf(['button', 'submit']),
-  intent: PropTypes.oneOf(['default', 'primary', 'warning', 'error']),
+  style: PropTypes.oneOf(['default', 'filled', 'subtle']),
+  intent: PropTypes.oneOf(['default', 'primary', 'success', 'warning', 'danger']),
   size: PropTypes.oneOf(['sm', 'md', 'lg', 'xl']),
   disabled: PropTypes.bool,
   loading: PropTypes.bool,
@@ -41,8 +43,9 @@ Button.propTypes = {
 }
 
 Button.defaultProps = {
-  id: ''
+  id: '',
   type: 'button',
+  style: 'default',
   intent: 'default',
   size: 'md',
   disabled: false,

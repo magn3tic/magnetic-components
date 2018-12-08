@@ -2,10 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from '../_lib/classnames'
 
-const Layout = ({ className, fullscreen, children }) => {
+
+const Layout = ({ className, fullscreen, sidebar, loading, children }) => {
 
   const layoutClasses = classnames(['mag-layout-container', className], {
-    'mag-fullscreen-container': fullscreen
+    'mag-fullscreen-container': fullscreen,
+    'mag-sidebar-layout': sidebar,
+    'mag-app-loading': loading
   })
 
   return (
@@ -18,12 +21,14 @@ const Layout = ({ className, fullscreen, children }) => {
 
 Layout.propTypes = {
   className: PropTypes.string,
-  fullscreen: PropTypes.bool
+  fullscreen: PropTypes.bool,
+  sidebar: PropTypes.bool
 }
 
 Layout.defaultProps = {
   className: '',
-  fullscreen: false
+  fullscreen: false,
+  sidebar: false
 }
 
 export default Layout

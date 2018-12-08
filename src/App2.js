@@ -3,31 +3,42 @@ import React from 'react'
 
 import Layout from './layout/Layout'
 import TopBar from './layout/TopBar'
-import RadioGroup from './forms/RadioGroup'
+import SideBar from './layout/SideBar'
+import Main from './layout/Main'
+import Page from './layout/Page'
+import { FlexParent, FlexItem } from './layout/Flex'
 
 import FilePicker from './forms/FilePicker'
-
+import Button from './general/Button'
 
 
 class App extends React.Component {
 
   render() {
     return (
-      <Layout className="my-extra-class">
+      <Layout fullscreen={true} sidebar={true} sidebarOpen={false}>
         
         <TopBar fixed={true}>
-          <div className="mag-inner">
-            <h3>I'm in the top bar</h3>
-          </div>
+          
         </TopBar>
+
+        <SideBar>
+          
+        </SideBar>
         
-        <main className="mag-main">
-          <div className="mag-inner">
+        <Main>
+
+          <Page>
 
             <FilePicker id="filepicker" label="Choose An Image" dropzone={true} />
 
-          </div>
-        </main>
+            <div style={{height: '3em'}}></div>
+
+            <Button>A Default Button</Button>
+
+          </Page>
+
+        </Main>
 
       </Layout>
     )

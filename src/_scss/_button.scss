@@ -1,0 +1,55 @@
+
+
+
+.mag-button {
+  @include btn-reset();
+  display: inline-block;
+  position: relative;
+  font-family: $body-font-family;
+  font-size: 12px;
+  color: $dark;
+  font-weight: 700;
+  border-radius: 4px;
+  padding: 14px 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  transition: background .3s ease;
+
+  &.style-default {
+    background: $light;
+
+    &:hover {
+      background: darken($light, 3%);
+    }
+    &:active {
+      transform: translateY(1px);
+    }
+    &:focus {
+      background: darken($light, 3%);
+      box-shadow: rgba($light, 0.5) 0 0 0 4px;
+    }
+  }
+
+
+
+
+  &.mag-button-primary {
+    color: $light;
+    background: $primary;
+  }
+
+  &.mag-button-success {
+    color: $light;
+    background: $success;
+  }
+
+  &.mag-button-warning {
+    color: $light;
+    background: $warning;
+  }
+
+  &.mag-button-danger {
+    color: $light;
+    background: $danger;
+  }
+}

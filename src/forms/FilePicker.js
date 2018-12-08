@@ -16,7 +16,7 @@ class FilePicker extends React.Component {
       files: [],
       dragging: false,
       isloading: false,
-      haserrors: false
+      itemerrors: false
     }
     this.inputRef = React.createRef()
 

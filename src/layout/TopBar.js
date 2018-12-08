@@ -2,36 +2,22 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from '../_lib/classnames'
 
-import { FlexParent, FlexItem } from './Flex'
+import { FlexParent } from './Flex'
 
 
-class TopBar extends React.Component {
+const TopBar = ({ fixed, className, children}) => {
+  
+  const topbarClasses = classnames(['mag-topbar'], {
+    'mag-topbar--fixed': fixed
+  })
 
-  constructor(props) {
-    super(props)
-  }
-
-
-  render() {
-    const { fixed, children } = this.props
-    
-    const topbarClasses = classnames(['mag-topbar'], {
-      'mag-topbar--fixed': fixed
-    })
-
-    return (
-      <header className={topbarClasses}>
-        <FlexParent>
-          <FlexItem>
-            <h3>Magnetic Creative</h3>
-          </FlexItem>
-
-          <FlexItem>
-          </FlexItem>
-        </FlexParent>
-      </header>
-    )
-  }
+  return (
+    <header id="mag-topbar" className={topbarClasses}>
+      <FlexParent>
+        {children}
+      </FlexParent>
+    </header>
+  )
 }
 
 

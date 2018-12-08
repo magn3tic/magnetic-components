@@ -1,5 +1,5 @@
 import React from 'react'
-
+import classnames from '../_lib/classnames'
 
 
 
@@ -17,10 +17,10 @@ class SideBar extends React.Component {
 
     return (
       <aside className={sidebarClasses}>
-        <div className="mag-flex-row">
+        <div className="mag-flex-column">
           {children}
         </div>
-      </header>
+      </aside>
     )
   }
 }

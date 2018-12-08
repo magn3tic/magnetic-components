@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { BrowserRouter } from 'react-router-dom'
 
 import App from './App'
 import App2 from './App2'
@@ -9,7 +10,11 @@ import * as serviceWorker from './_lib/service-worker'
 import './_scss/app.scss'
 
 ReactDOM.render(
-  process.env.REACT_APP_DEVELOPER_ENV === 'colin' ? <App2/> : <App/>, 
+  process.env.REACT_APP_DEVELOPER_ENV === 'colin' ? 
+  <BrowserRouter>
+    <App2/>
+  </BrowserRouter> : 
+  <App/>, 
   document.getElementById('root')
 )
 

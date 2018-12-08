@@ -7,6 +7,7 @@ const Page = ({ title, children }) => {
 
   return (
     <section className="mag-page">
+      {children}
     </section>
   )
 }
