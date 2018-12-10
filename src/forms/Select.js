@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from '../_lib/classnames'
+import Label from './Label'
+import InputErrors from './InputErrors'
 
 const Select = props => {
   const {
@@ -25,18 +27,26 @@ const Select = props => {
   })
 
   return (
-    <select
-      className={ cns }
-      value={ value }
-      onChange={ e => onChange(e) }
-      disabled={ disabled }
-    >
-      {options.map((option, i) => 
-        <option key={ i } >
-          { option }
-        </option>
-      )}
-    </select>
+    <div className={ cns }>
+      <Label inputId={ id } text={ label } />
+      <select
+        value={ value }
+        disabled={ disabled }
+        onChange={ onChange }
+        onKeyDown={ onKeyDown }
+        onKeyPress={ onKeyPress }
+        onKeyUp={ onKeyUp }
+        onFocus={ onFocus }
+        onBlur={ onBlur }
+      >
+        {options.map((option, i) => 
+          <option key={ i } >
+            { option }
+          </option>
+        )}
+      </select>
+      <InputErrors errors={ errors } />
+    </div>
   )
 }
 
