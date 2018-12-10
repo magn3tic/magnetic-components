@@ -3,7 +3,7 @@ import React from 'react'
 
 import Layout from './layout/Layout'
 import TopBar from './layout/TopBar'
-import ColorInput from './forms/ColorInput'
+import Select from './forms/Select'
 
 import FilePicker from './forms/FilePicker'
 
@@ -13,14 +13,21 @@ class App extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = { currentColor: '#FF0000', }
+    this.state = {
+      options: [
+        'Value 1',
+        'Value 2',
+        'Value 3',
+      ],
+      selectedOption: undefined,
+    }
 
-    this.setCurrentColor = this.setCurrentColor.bind(this)
+    this.setSelectedOption = this.setSelectedOption.bind(this)
   }
 
-  setCurrentColor(color, target) {
+  setSelectedOption(e) {
     this.setState({
-      currentColor: color,
+      selectedOption: e.target.value,
     })
   }
 
@@ -45,11 +52,12 @@ class App extends React.Component {
         <div className="test-spacer" style={{'marginTop': '10rem'}}>
           <div className="mag-inner">
             <form>
-              <ColorInput
-                id="mag-test-colorinput"
-                name="mag-colorinput"
-                value={ this.state.currentColor }
-                onChange={ this.setCurrentColor }
+              <Select
+                id="mag-test-select"
+                name="mag-select"
+                value={ this.state.selectedOption }
+                options={ this.state.options }
+                onChange={ e => this.setSelectedOption(e) }
               />
             </form>
           </div>
