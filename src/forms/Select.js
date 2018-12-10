@@ -30,6 +30,7 @@ const Select = props => {
     <div className={ cns }>
       <Label inputId={ id } text={ label } />
       <select
+        id={ id }
         value={ value }
         disabled={ disabled }
         onChange={ onChange }
