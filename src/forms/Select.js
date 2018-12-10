@@ -19,10 +19,14 @@ const Select = props => {
     onBlur,
   } = props
 
-  const cns = classnames([], {})
+  const cns = classnames(['mag-field', 'mag-select'], {
+    'mag-field-error': errors !== false,
+    'mag-field-disabled': disabled,
+  })
 
   return (
     <select
+      className={ cns }
       value={ value }
       onChange={ e => onChange(e) }
       disabled={ disabled }
