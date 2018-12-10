@@ -45,7 +45,7 @@ Select.propTypes = {
   label: PropTypes.string,
   name: PropTypes.string,
   value: PropTypes.string,
-  options: PropTypes.array,
+  options: PropTypes.arrayOf(PropTypes.string),
   disabled: PropTypes.bool,
   errors: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.string),
