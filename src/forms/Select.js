@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import classnames from '../_lib/classnames'
 import Label from './Label'
 import InputErrors from './InputErrors'
+import { basicInputProps, defaultInputPropTypes } from './basicProps'
 
 const Select = props => {
   const {
@@ -52,40 +53,17 @@ const Select = props => {
 }
 
 Select.propTypes = {
-  id: PropTypes.string,
-  label: PropTypes.string,
-  name: PropTypes.string,
-  value: PropTypes.string,
+  ...basicInputProps,
   options: PropTypes.arrayOf(PropTypes.string),
-  disabled: PropTypes.bool,
-  errors: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.string),
-    PropTypes.bool
-  ]).isRequired,
-  onChange: PropTypes.func,
-  onKeyDown: PropTypes.func,
-  onKeyPress: PropTypes.func,
-  onKeyUp: PropTypes.func,
-  onFocus: PropTypes.func,
-  onBlur: PropTypes.func,
 }
 
 Select.defaultProps = {
-  id: '',
-  label: 'Label',
-  disabled: false,
-  errors: false,
+  ...defaultInputPropTypes,
   options: [
     'Option 1',
     'Option 2',
     'Option 3',
   ],
-  onChange: e => {},
-  onKeyDown: e => {},
-  onKeyPress: e => {},
-  onKeyUp: e => {},
-  onFocus: e => {},
-  onBlur: e => {},
 }
 
 export default Select

@@ -4,6 +4,7 @@ import Fuse from 'fuse.js'
 import classnames from '../_lib/classnames'
 import Label from './Label'
 import InputErrors from './InputErrors'
+import { basicInputProps, defaultInputPropTypes } from './basicProps'
 
 const SearchInput = props => {
   const {
@@ -66,10 +67,7 @@ const SearchInput = props => {
 }
 
 SearchInput.propTypes = {
-  id: PropTypes.string,
-  label: PropTypes.string,
-  name: PropTypes.string,
-  placeholder: PropTypes.string,
+  ...basicInputProps,
   searchConfig: PropTypes.object,
   searchableValues: PropTypes.arrayOf(PropTypes.object),
   searchParams: PropTypes.arrayOf(PropTypes.string),
@@ -78,37 +76,15 @@ SearchInput.propTypes = {
     PropTypes.arrayOf(PropTypes.string),
     PropTypes.string,
   ]),
-  disabled: PropTypes.bool,
-  errors: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.string),
-    PropTypes.bool
-  ]).isRequired,
-  onChange: PropTypes.func,
-  onKeyDown: PropTypes.func,
-  onKeyPress: PropTypes.func,
-  onKeyUp: PropTypes.func,
-  onFocus: PropTypes.func,
-  onBlur: PropTypes.func,
 }
 
 SearchInput.defaultProps = {
-  id: '',
-  label: 'Label',
-  disabled: false,
-  placeholder: 'Search...',
-  errors: false,
+  ...defaultInputPropTypes,
   searchableValues: [],
   searchParams: [],
   fuzzyResults: [],
   fuzzyResultsParam: '',
   fuzzyResults: [],
-  onChange: e => {},
-  onKeyDown: e => {},
-  onKeyPress: e => {},
-  onKeyUp: e => {},
-  onFocus: e => {},
-  onBlur: e => {},
 }
-
 
 export default SearchInput

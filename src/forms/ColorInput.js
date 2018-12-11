@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import classnames from '../_lib/classnames'
 import Label from './Label'
 import InputErrors from './InputErrors'
+import { basicInputProps, defaultInputPropTypes } from './basicProps'
 
 const ColorInput = props => {
   const {
@@ -41,28 +42,11 @@ const ColorInput = props => {
 }
 
 ColorInput.propTypes = {
-  id: PropTypes.string,
-  label: PropTypes.string,
-  name: PropTypes.string,
-  value: PropTypes.string,
-  disabled: PropTypes.bool,
-  errors: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.string),
-    PropTypes.bool
-  ]).isRequired,
-  onChange: PropTypes.func,
-  onFocus: PropTypes.func,
-  onBlur: PropTypes.func,
+  ...basicInputProps,
 }
 
 ColorInput.defaultProps = {
-  id: '',
-  label: 'Label',
-  disabled: false,
-  errors: false,
-  onChange: e => {},
-  onFocus: e => {},
-  onBlur: e => {},
+  ...defaultInputPropTypes,
 }
 
 export default ColorInput
