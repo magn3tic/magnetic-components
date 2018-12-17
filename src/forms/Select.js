@@ -3,15 +3,15 @@ import PropTypes from 'prop-types'
 import classnames from '../_lib/classnames'
 import Label from './Label'
 import InputErrors from './InputErrors'
-import { basicInputProps, defaultInputPropTypes } from './basicProps';
+import { basicInputProps, defaultInputPropTypes } from './basicProps'
 
-const TextInput = props => {
+const Select = props => {
   const {
     id,
     label,
     name,
     value,
-    placeholder,
+    options,
     disabled,
     errors,
     onChange,
@@ -22,20 +22,17 @@ const TextInput = props => {
     onBlur,
   } = props
 
-  const cns = classnames(['mag-field', 'mag-textinput'], {
+  const cns = classnames(['mag-field', 'mag-select'], {
     'mag-field-error': errors !== false,
     'mag-field-disabled': disabled,
   })
 
   return (
     <div className={ cns }>
-      {(label.length > 0) && <Label inputId={ id } text={ label } />}
-      <input
+      <Label inputId={ id } text={ label } />
+      <select
         id={ id }
-        type='text'
-        name={ name }
         value={ value }
-        placeholder={ placeholder }
         disabled={ disabled }
         onChange={ onChange }
         onKeyDown={ onKeyDown }
@@ -43,18 +40,30 @@ const TextInput = props => {
         onKeyUp={ onKeyUp }
         onFocus={ onFocus }
         onBlur={ onBlur }
-      />
+      >
+        {options.map((option, i) => 
+          <option key={ i } >
+            { option }
+          </option>
+        )}
+      </select>
       <InputErrors errors={ errors } />
     </div>
   )
 }
 
-TextInput.propTypes = {
+Select.propTypes = {
   ...basicInputProps,
+  options: PropTypes.arrayOf(PropTypes.string),
 }
 
-TextInput.defaultProps = {
+Select.defaultProps = {
   ...defaultInputPropTypes,
+  options: [
+    'Option 1',
+    'Option 2',
+    'Option 3',
+  ],
 }
 
-export default TextInput
+export default Select
