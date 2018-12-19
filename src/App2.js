@@ -4,6 +4,7 @@ import React from 'react'
 import Layout from './layout/Layout'
 import TopBar from './layout/TopBar'
 import SideBar from './layout/SideBar'
+import ActionBar from './layout/ActionBar'
 import Main from './layout/Main'
 import Page from './layout/Page'
 import { FlexParent, FlexItem } from './layout/Flex'
@@ -42,9 +43,10 @@ class App extends React.Component {
 
           <Page>
 
-            <FilePicker id="filepicker" label="Choose An Image" dropzone={true} onFiles={} />
+            <FilePicker id="filepicker" label="Choose An Image" dropzone={true} 
+              onFiles={e => console.log(e)} />
 
-            <div style={{height: '3em'}}></div>
+            <div style={{height: '100vw'}}></div>
 
             <Button>A Default Button</Button>
 
@@ -52,6 +54,9 @@ class App extends React.Component {
 
         </Main>
 
+        <ActionBar>
+          <h4>I'm in the action bar!!</h4>
+        </ActionBar>
       </Layout>
     )
   }
